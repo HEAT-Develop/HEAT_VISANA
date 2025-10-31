@@ -1,0 +1,62 @@
+-- MySQL dump 10.13  Distrib 8.0.38, for macos14 (x86_64)
+--
+-- Host: localhost    Database: hyb2_tir_lv3
+-- ------------------------------------------------------
+-- Server version	9.0.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `craters`
+--
+
+DROP TABLE IF EXISTS `craters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `craters` (
+  `crater_id` char(36) NOT NULL DEFAULT (uuid()),
+  `asteroid_id` char(36) NOT NULL,
+  `run_id` char(36) NOT NULL,
+  `region_id` char(36) DEFAULT NULL,
+  `crater_code` varchar(64) DEFAULT NULL,
+  `crater_name` varchar(255) DEFAULT NULL,
+  `quality_score` double DEFAULT NULL,
+  `crater_uri` varchar(2048) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`crater_id`),
+  KEY `idx_crater_asteroid` (`asteroid_id`),
+  KEY `idx_crater_run` (`run_id`),
+  CONSTRAINT `fk_crater_asteroid` FOREIGN KEY (`asteroid_id`) REFERENCES `asteroids` (`asteroid_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_crater_run` FOREIGN KEY (`run_id`) REFERENCES `detection_runs` (`run_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `craters`
+--
+
+LOCK TABLES `craters` WRITE;
+/*!40000 ALTER TABLE `craters` DISABLE KEYS */;
+INSERT INTO `craters` VALUES ('00896d03-df84-4417-9907-c6957e3839a4','83cb30ab-68af-46dc-8942-bdd8917dcc06','7662aece-3c7c-4e38-bc16-6419cd5002f6','4d409db4-a36c-11f0-acee-1f6fcfc3609a','50','crater_50',0,'','2025-10-14 04:03:48'),('00a333bc-7da2-464d-8beb-c07343f0ee47','83cb30ab-68af-46dc-8942-bdd8917dcc06','bc2f0f27-f1a8-465e-bb0f-a014811b3390','c668d0ac-a3f4-11f0-acee-1f6fcfc3609a','58','crater_58',0,'','2025-10-14 05:00:32'),('04bcae5e-b61e-47ca-9c9a-731d41d24f61','83cb30ab-68af-46dc-8942-bdd8917dcc06','a2eddda1-1b06-4ee8-a836-ccdc1d38c8a4','a43dd22c-a410-11f0-acee-1f6fcfc3609a','61','crater_61',0,'','2025-10-14 05:35:31'),('07bee5f2-2813-4ef2-8237-595e72313894','83cb30ab-68af-46dc-8942-bdd8917dcc06','26248439-88e4-4ee9-9c52-2b7c130251ff','e9ddae48-a342-11f0-acee-1f6fcfc3609a','44','crater_44',0,'','2025-10-14 01:10:18'),('0d98023f-6f05-40c3-863a-8d1b61de3189','83cb30ab-68af-46dc-8942-bdd8917dcc06','44d17d89-14d9-41ac-9fb4-61691fa2faf4','7409a3a4-a36d-11f0-acee-1f6fcfc3609a','52','crater_52',0,'','2025-10-14 04:25:21'),('18a94cae-984c-4bb2-b388-a6f5a20a7d59','7b5c3101-f9da-4ebe-b4c0-56e354c1f5cf','557ceb57-5283-4c24-860a-9dcf30691977','ea754df2-a8fb-11f0-9fed-3f23f151c1d6','49','crater_49',0,'','2025-10-14 04:00:44'),('211f68df-5ec3-444f-a49e-f5c0078a0620','83cb30ab-68af-46dc-8942-bdd8917dcc06','d7254603-b24c-481f-88ac-d6ee8b758e73','6c487a7e-a344-11f0-acee-1f6fcfc3609a','46','crater_46',0,'','2025-10-14 01:13:40'),('22f988b3-1d43-4d77-b0ca-432e654f6d9d','83cb30ab-68af-46dc-8942-bdd8917dcc06','5b038283-03fb-43a4-9bee-6abc7d219d7c','52d627b8-a0e6-11f0-8f46-94a685a6b38d','30','crater_30',0,'','2025-10-08 23:43:16'),('25d8b9db-3a04-4c34-8d43-bbb2d981f641','83cb30ab-68af-46dc-8942-bdd8917dcc06','8f58dad1-2734-4403-b090-8922d73ea697','c2285588-a338-11f0-acee-1f6fcfc3609a','42','crater_42',0,'','2025-10-13 16:47:09'),('2933696b-3bf3-437f-ac66-8cb9504bfb02','83cb30ab-68af-46dc-8942-bdd8917dcc06','20763ce4-a422-4ff5-a81d-e680b3c18066','db56e658-a36c-11f0-acee-1f6fcfc3609a','51','crater_51',0,'','2025-10-14 04:09:00'),('29b8cb6c-3832-41a1-83c9-9be47ff28d8a','83cb30ab-68af-46dc-8942-bdd8917dcc06','8fb51e5f-1d9e-4778-8157-e47273b2212d','ac490e4a-a286-11f0-8ffe-756ec698a571','39','crater_39',0,'','2025-10-13 16:39:13'),('2ee93cbb-e702-49e6-8519-f4278e35aa35','83cb30ab-68af-46dc-8942-bdd8917dcc06','a5d283ac-a652-426f-8c49-7103f55e67f6','ddaec9aa-a3f0-11f0-acee-1f6fcfc3609a','57','crater_57',0,'','2025-10-14 04:55:28'),('2f1181c2-5897-4142-b7ec-c0fc5987e5b7','83cb30ab-68af-46dc-8942-bdd8917dcc06','70e23dc7-e2f0-4797-a149-e140985bf9ff','f578e0aa-a4d8-11f0-acee-1f6fcfc3609a','76','crater_76',0,'','2025-10-14 22:45:19'),('33b31136-54c1-4760-a352-73864b88467c','83cb30ab-68af-46dc-8942-bdd8917dcc06','e4090b84-a6e5-4a49-a3f6-8d67b04c9217','c92d4b6e-a260-11f0-8ffe-756ec698a571','33','crater_33',0,'','2025-10-13 16:00:54'),('3486ff0a-95d0-4bc7-ac49-a212a92d937c','83cb30ab-68af-46dc-8942-bdd8917dcc06','c97c9dfb-33b1-4eca-9d06-91102c019580','129b08e4-a37a-11f0-acee-1f6fcfc3609a','55','crater_55',0,'','2025-10-14 04:41:40'),('3c8151b9-fa63-4892-ac37-15544d293eb2','83cb30ab-68af-46dc-8942-bdd8917dcc06','f8c09d07-bbca-4ede-a307-32a16710c9e9','b833d378-a413-11f0-acee-1f6fcfc3609a','62','crater_62',0,'','2025-10-14 15:51:42'),('4289b78c-d531-41f3-9919-bb1b25bd6484','7b5c3101-f9da-4ebe-b4c0-56e354c1f5cf','480d410f-5adf-4681-af2f-4347e0a7df35','6557b490-a962-11f0-9fed-3f23f151c1d6','64','crater_64',0,'','2025-10-14 16:06:29'),('5151a4da-9738-42b7-ad91-d46e6a829bc8','83cb30ab-68af-46dc-8942-bdd8917dcc06','ae5d7100-ec8c-40a0-b340-a9e05997b834','f775b68c-a378-11f0-acee-1f6fcfc3609a','54','crater_54',0,'','2025-10-14 04:31:36'),('56e7b4a0-0daa-4095-a3db-1127e6824d98','83cb30ab-68af-46dc-8942-bdd8917dcc06','c82eaa11-b12a-4985-a870-06aee0acd886','5443f530-a4d3-11f0-acee-1f6fcfc3609a','73','crater_73',0,'','2025-10-14 17:33:32'),('6deb1901-fc8b-4cfa-8bb0-6cbc6296d342','83cb30ab-68af-46dc-8942-bdd8917dcc06','cb0e520e-d160-49e9-929b-b76cab2342eb','a791bfc4-a4d3-11f0-acee-1f6fcfc3609a','74','crater_74',0,'','2025-10-14 22:33:05'),('70fae448-3cef-4fc2-83c3-f7e469c43088','83cb30ab-68af-46dc-8942-bdd8917dcc06','ec3af159-323a-4bca-8af2-b74cfd7967b6','de94f7ee-a4d2-11f0-acee-1f6fcfc3609a','72','crater_72',0,'','2025-10-14 17:28:46'),('711f1403-d09e-4288-a1b8-baab0412866b','83cb30ab-68af-46dc-8942-bdd8917dcc06','de23a332-c1a7-4469-887f-6d6c7311257c','add07bb6-a4d1-11f0-acee-1f6fcfc3609a','69','crater_69',0,'','2025-10-14 17:06:43'),('72119dae-c6ae-46ad-9569-41eea27be152','83cb30ab-68af-46dc-8942-bdd8917dcc06','455bb334-1431-4ae3-88c4-26adf5cd85d2','3e1f5e76-a33d-11f0-acee-1f6fcfc3609a','43','crater_43',0,'','2025-10-14 01:08:48'),('734871ea-31dc-498f-bfe7-269ed9d0312b','83cb30ab-68af-46dc-8942-bdd8917dcc06','9d1f474d-2bbd-4a57-9210-b2b52fb444ba','046d90d0-a36f-11f0-acee-1f6fcfc3609a','53','crater_53',0,'','2025-10-14 04:14:45'),('76dd3775-0d6d-49f9-8e6d-f73895ab7585','83cb30ab-68af-46dc-8942-bdd8917dcc06','d70191f4-0397-4e47-897c-3f0aede40a77','f07ebe74-a29b-11f0-8ffe-756ec698a571','41','crater_41',0,'','2025-10-13 16:44:48'),('7db2b2e3-ea73-4999-b9c2-dcddf91a6586','83cb30ab-68af-46dc-8942-bdd8917dcc06','e39d6d5b-fd6d-402f-9656-5f43d0046401','4024ff96-a27f-11f0-8ffe-756ec698a571','36','crater_36',0,'','2025-10-13 16:28:51'),('849011b4-5283-43c4-b937-5dbeb79a8b54','83cb30ab-68af-46dc-8942-bdd8917dcc06','563ed602-ba5d-4037-bbeb-f4abfbce07d9','2ee7ff52-a299-11f0-8ffe-756ec698a571','40','crater_40',0,'','2025-10-13 16:42:53'),('87670256-97dc-4037-9864-81aeea9efe4e','83cb30ab-68af-46dc-8942-bdd8917dcc06','4a87a383-e3b8-40d6-8cfe-79fa23083fed','8481e696-a279-11f0-8ffe-756ec698a571','34','crater_34',0,'','2025-10-13 16:12:18'),('91457506-f86c-4f13-8a12-17ae344f06a4','83cb30ab-68af-46dc-8942-bdd8917dcc06','feac9be3-60db-4b74-a854-368acc1ccd38','9d89d1b0-a4d8-11f0-acee-1f6fcfc3609a','75','crater_75',0,'','2025-10-14 22:40:59'),('9181262b-89e5-4bf4-ba47-fa923bd74c23','83cb30ab-68af-46dc-8942-bdd8917dcc06','c8ece781-578d-4567-9985-d0ebe2eb64b1','a80e8acc-a0e1-11f0-8f46-94a685a6b38d','29','crater_29',0,'','2025-10-08 23:16:32'),('95d53556-8cdb-44e3-89b6-2a3b8a05f3c8','83cb30ab-68af-46dc-8942-bdd8917dcc06','11e7fee3-ace4-420d-a2e3-94dc55977207','fd0f0048-a40f-11f0-acee-1f6fcfc3609a','60','crater_60',0,'','2025-10-14 05:32:27'),('9e0842e3-f102-4679-825b-422680254f17','83cb30ab-68af-46dc-8942-bdd8917dcc06','09661fe5-4546-4b02-b0b6-afa32cfb2a5c','f248e1e0-a4ca-11f0-acee-1f6fcfc3609a','65','crater_65',0,'','2025-10-14 16:09:24'),('a39773c6-e527-4563-a110-0b241ba6c23a','83cb30ab-68af-46dc-8942-bdd8917dcc06','30ff4ea1-9c71-4285-a153-1c78a392095f','45064b42-a283-11f0-8ffe-756ec698a571','37','crater_37',0,'','2025-10-13 16:31:32'),('af49d141-e64b-4de4-9654-0e28c4eb9154','83cb30ab-68af-46dc-8942-bdd8917dcc06','0cdeb629-b533-4cb9-9cf2-6d713b8782f2','0b004002-a345-11f0-acee-1f6fcfc3609a','47','crater_47',0,'','2025-10-14 01:20:52'),('b5ee697c-f4ff-4355-81a9-37fa9e579f24','83cb30ab-68af-46dc-8942-bdd8917dcc06','de42c6db-e357-4c8b-b3cc-b21d04ec8795','f386c964-a27c-11f0-8ffe-756ec698a571','35','crater_35',0,'','2025-10-13 16:24:38'),('bf8c26e6-9987-451f-b5de-21946ac0d8be','83cb30ab-68af-46dc-8942-bdd8917dcc06','3c723b9e-1ea3-4504-b80b-0574587bdc77','8390e490-a4cb-11f0-acee-1f6fcfc3609a','67','crater_67',0,'','2025-10-14 16:26:01'),('cc45240c-505b-4a29-8686-86a41a2f39cd','83cb30ab-68af-46dc-8942-bdd8917dcc06','a8a6185c-0b44-4eb3-92ba-6a6b654f4edb','960a317e-a4d2-11f0-acee-1f6fcfc3609a','71','crater_71',0,'','2025-10-14 17:15:37'),('d51843ab-e58e-4005-a089-e6e0ac4a61e4','83cb30ab-68af-46dc-8942-bdd8917dcc06','0c4aaf47-c57e-4943-a27b-a80c945d43c5','41f56d56-a0ea-11f0-8f46-94a685a6b38d','31','crater_31',0,'','2025-10-13 15:57:01'),('e20ebca8-a623-4c03-85e0-242c947e9b17','83cb30ab-68af-46dc-8942-bdd8917dcc06','4b40eb62-9fad-4fef-8dd3-b674e801e723','eb19914c-a454-11f0-acee-1f6fcfc3609a','63','crater_63',0,'','2025-10-14 15:56:29'),('e2fdc7bb-358c-4175-91c5-373847279d16','83cb30ab-68af-46dc-8942-bdd8917dcc06','29329dae-0fdd-49d8-9591-a7feb2a6e282','9f68e1e6-a37b-11f0-acee-1f6fcfc3609a','56','crater_56',0,'','2025-10-14 04:50:42'),('e4f3965f-1076-4eea-ae13-d8cb649b8e36','83cb30ab-68af-46dc-8942-bdd8917dcc06','82dbbaba-ae7e-4bd2-888b-6bf53865cc22','63a5f6be-a4d2-11f0-acee-1f6fcfc3609a','70','crater_70',0,'','2025-10-14 17:08:03'),('e827cc53-275a-4cb6-8c5d-b7f6267fc5b5','83cb30ab-68af-46dc-8942-bdd8917dcc06','9c9be0c1-be49-4303-a635-3c4f11d5e091','8f8358f0-a345-11f0-acee-1f6fcfc3609a','48','crater_48',0,'','2025-10-14 01:25:18'),('ee002e69-3265-4b4d-804b-3539b1436695','83cb30ab-68af-46dc-8942-bdd8917dcc06','9588bbc7-c347-4a3a-b4ab-ef4e07870929','43003250-a4cb-11f0-acee-1f6fcfc3609a','66','crater_66',0,'','2025-10-14 16:14:55'),('f0ca6364-97e7-4207-87ed-a44f76c1a3a0','83cb30ab-68af-46dc-8942-bdd8917dcc06','3d806807-b363-4c4e-b3de-0095f6ab847c','30205f8e-a0f2-11f0-8f46-94a685a6b38d','32','crater_32',0,'','2025-10-13 15:58:23'),('f3b11e08-a8a2-4916-9bc6-ebf5bc3af01b','83cb30ab-68af-46dc-8942-bdd8917dcc06','cc0e4001-9faa-4ff3-9937-7fe23668c51c','0c53cae4-a3f6-11f0-acee-1f6fcfc3609a','59','crater_59',0,'','2025-10-14 05:26:00'),('fae8d225-ff60-466e-9bc5-20a945e181da','83cb30ab-68af-46dc-8942-bdd8917dcc06','8d689423-60af-4e0f-8b2c-b63a91c9a03b','865647b2-a343-11f0-acee-1f6fcfc3609a','45','crater_45',0,'','2025-10-14 01:12:01'),('fb4308c6-5f44-4f21-a745-8a53bea7d6a3','83cb30ab-68af-46dc-8942-bdd8917dcc06','d6e34387-fabc-4f72-bfa3-836cc8110c63','76241284-a285-11f0-8ffe-756ec698a571','38','crater_38',0,'','2025-10-13 16:33:30'),('fbe5139b-a26f-4954-97e0-2e7bfff50239','83cb30ab-68af-46dc-8942-bdd8917dcc06','bc422e5f-ab02-4aae-93d4-bfbada48065a','74fa9eb0-a4cd-11f0-acee-1f6fcfc3609a','68','crater_68',0,'','2025-10-14 16:45:29'),('fc43acac-04be-44ce-b404-af8e96d74eeb','83cb30ab-68af-46dc-8942-bdd8917dcc06','479cf8af-79f3-44c0-95e0-9ab27db94ad1','b126b69c-a4d9-11f0-acee-1f6fcfc3609a','77','crater_77',0,'','2025-10-14 22:51:01');
+/*!40000 ALTER TABLE `craters` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-10-31 17:29:49

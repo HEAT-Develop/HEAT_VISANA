@@ -1,0 +1,141 @@
+
+QDialog,
+QScrollArea,
+QWidget#ScrollViewport,
+QWidget#ScrollContent,
+QScrollArea > QWidget#qt_scrollarea_viewport {
+  background: #FFFFFF;
+  border: none;
+}
+
+QFrame#Card {
+  background: #FFFFFF;
+  border: 1px solid rgba(10,132,255,.25);
+  border-radius: 12px;
+}
+
+QDialog {
+    background: #FFFFFF;
+  }
+  
+  QScrollArea {
+    border: none;
+    background: #FFFFFF;
+  }
+  QScrollArea > QWidget#qt_scrollarea_viewport {
+    background: #FFFFFF;
+  }
+  
+  /* ---- Section titles ---- */
+  QLabel#Title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0A84FF;
+    letter-spacing: .3px;
+    background-color: white;
+  }
+  
+  /* ---- Card ---- */
+  QFrame#Card {
+    background: #FFFFFF;
+    border: 1px solid rgba(10,132,255, .25);
+    border-radius: 12px;
+  }
+  
+  /* ---- Inputs ---- */
+  QLineEdit,
+  QPlainTextEdit,
+  QDateTimeEdit,
+  QComboBox,
+  QSpinBox,
+  QDoubleSpinBox {
+    padding: 6px 8px;
+    border: 1px solid rgba(10,132,255, .25);
+    border-radius: 8px;
+    background: #FFFFFF;
+  }
+  QLineEdit:focus,
+  QPlainTextEdit:focus,
+  QDateTimeEdit:focus,
+  QComboBox:focus,
+  QSpinBox:focus,
+  QDoubleSpinBox:focus {
+    border: 1px solid #0A84FF;
+    background: #FFFFFF;
+  }
+  
+  /* Optional: subtle "invalid" state without new colors */
+  QLineEdit[invalid="true"],
+  QPlainTextEdit[invalid="true"] {
+    border: 2px solid #0A84FF;
+    background: rgba(10,132,255, .06);
+  }
+  
+  /* ---- Buttons ---- */
+  /* Primary (filled) */
+  QPushButton#Primary {
+    color: #FFFFFF;
+    background: #0A84FF;
+    border: 1px solid #0A84FF;
+    border-radius: 8px;
+    padding: 8px 14px;
+  }
+  QPushButton#Primary:hover {
+    border-width: 2px;                /* micro feedback without new colors */
+  }
+  QPushButton#Primary:pressed {
+    padding-top: 9px; padding-bottom: 7px; /* tiny press effect */
+  }
+  
+  /* Ghost (outline) */
+  QPushButton#Ghost {
+    color: #0A84FF;
+    background: #FFFFFF;
+    border: 1px solid #0A84FF;
+    border-radius: 8px;
+    padding: 6px 10px;
+  }
+  QPushButton#Ghost:hover {
+    background: rgba(10,132,255, .06);
+  }
+  QPushButton#Ghost:pressed {
+    background: rgba(10,132,255, .12);
+  }
+  
+  /* Button box top spacing line (same palette) */
+  QDialogButtonBox {
+    padding-top: 6px;
+    border-top: 1px solid rgba(10,132,255, .15);
+  }
+  
+  /* ---- Slim scrollbars (white track, blue handle) ---- */
+  QScrollBar:vertical {
+    width: 10px;
+    background: #FFFFFF;
+    margin: 2px;
+  }
+  QScrollBar::handle:vertical {
+    min-height: 24px;
+    background: rgba(10,132,255, .35);
+    border-radius: 5px;
+  }
+  QScrollBar::handle:vertical:hover {
+    background: rgba(10,132,255, .60);
+  }
+  QScrollBar::add-line:vertical,
+  QScrollBar::sub-line:vertical,
+  QScrollBar::add-page:vertical,
+  QScrollBar::sub-page:vertical {
+    background: transparent;
+    height: 0px;
+  }
+  
+  /* ---- Tooltips (blue on white) ---- */
+  QToolTip {
+    color: #FFFFFF;
+    background: #0A84FF;
+    border: 1px solid #0A84FF;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  
