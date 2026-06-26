@@ -126,7 +126,7 @@ This page includes a sub-menu with:
 
 It is the first page that appears when the user opens HEAT\_VISANA This page has 16 features for the visulizaton and Anlaysis of the asteroids. 
 
-2  3  4  5  11  12  13  14 !1 
+2  3  4  5  11  12  13  14 1 
 6  7 
 15 
 8 
